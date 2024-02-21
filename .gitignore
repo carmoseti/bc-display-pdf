@@ -1,0 +1,6 @@
+.alpackages/
+.snapshots/
+.vscode/
+
+*.app
+WebService.xml
