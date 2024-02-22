@@ -51,13 +51,18 @@ page 50101 "PDF Upload"
                     TempBlob: Codeunit "Temp Blob";
                     FileManagement: Codeunit "File Management";
                     InStr: InStream;
+
+                    Progress: Dialog;
                 begin
                     FileName := FileManagement.BLOBImport(TempBlob, '.pdf');
 
+                    Progress.Open('Uploading the file and converting to base 64');
+
                     TempBlob.CreateInStream(InStr);
                     FileContentsB64 := Base64Convert.ToBase64(InStr);
-
                     IsDataFilled := true;
+
+                    Progress.Close();
                 end;
             }
 
